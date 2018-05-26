@@ -3,7 +3,7 @@ import NewsList from './NewsList.jsx';
 
 const ListItem = (props) => (
   <span>
-    <img src={props.article.imageUrl}/>
+    <a href={props.article.url}><img src={props.article.imageUrl}/></a>
     <span className='details'>
       <button >Save</button>
       <button>Go</button>
