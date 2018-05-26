@@ -50,10 +50,11 @@ let save = ({articles},query) => {
 }
 
 let retrieve = (term) => {
-  return Article.find({})
-                // .limit(25)
-                .exec()
+  return Article.find().exec()
+  //               // .limit(25)              
 }
+
+
 
 module.exports.save = save;
 module.exports.retrieve = retrieve;
@@ -69,3 +70,9 @@ module.exports.retrieve = retrieve;
 //     }
 //   });
 // };
+
+
+// return Article.find({'topic': term}).exec(function(err,results){
+//     if(err)console.error(err);
+//     else console.log('in retrieve',results.type)
+//   })

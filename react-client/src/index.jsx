@@ -23,12 +23,12 @@ class App extends React.Component {
   }
 
   search (topic) {
-    axios.post('/articles', {
+    axios.post(`/articles/${topic}`, {
       query: topic
     })
     .then((reponse) => {
       
-      return axios.get('/articles', {params:{query:topic}})
+      return axios.get(`/articles/${topic}`, {params:{query:topic}})
     })
     .then(({data}) => {
       this.setState({
