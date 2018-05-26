@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var {MLAB} = require('../config.js')
-mongoose.connect(MLAB);
+// var {MLAB} = require('../config.js')
+mongoose.connect(process.env.MLAB);
 
 var db = mongoose.connection;
 

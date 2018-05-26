@@ -5,7 +5,7 @@ try {
 } catch(err) {
   // GITHUB_TOKEN might have a different name
   // depending on your configuration
-  config = process.env.GITHUB_TOKEN
+  config = process.env.TOKEN
 }
 
 let getArticlesByTopic = (topic, callback) => {
