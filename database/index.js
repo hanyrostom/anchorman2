@@ -22,7 +22,11 @@ var articleSchema = mongoose.Schema({
     unique: true,
     required: true
   },
-  imageUrl: String,
+  imageUrl:  {
+    type: String,
+    unique: true,
+    required: true
+  },
   source: String
 });
 
@@ -50,7 +54,7 @@ let save = ({articles},query) => {
 }
 
 let retrieve = (term) => {
-  return Article.find().exec()
+  return Article.find({topic: term}).exec()
   //               // .limit(25)              
 }
 

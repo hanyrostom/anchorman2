@@ -24,7 +24,7 @@ class Search extends React.Component {
   render() {
     return (<div>
       <h4>We'll catch you up on everything you might've missed</h4>
-      <p>Type in a topic of interest. ex: Apple, bitcoin.. etc.</p>
+      <h5>Type in a topic of interest. ex: Apple, bitcoin.. etc.</h5>
       <input value={this.state.topic} onChange={this.onChange}/>
       <button onClick={this.search}> What's new</button>
     </div>)

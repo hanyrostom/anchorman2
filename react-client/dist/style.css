@@ -1,0 +1,60 @@
+body  {
+    color: rgba(0, 84, 127, 1);
+}
+
+/*p{
+    border: 1px solid red;
+}*/
+
+.main-list{
+    /*border: 1px solid red;*/
+    overflow: hidden;
+}
+
+span{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    /*border: 1px solid red;*/
+}
+
+span img{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.details{
+    position: absolute;
+    bottom: 0.5em;
+    left: 16px;
+}
+
+
+
+
+span p{
+    color: white;
+    Font-Family: 'Roboto', Sans-Serif;
+    Font-Size: 0.9em;
+    text-shadow: 1px 1px 5px grey,
+}
+
+span h4{
+    color: white;
+    padding-bottom: 0em;
+    /*border: 1px solid red;*/
+    text-shadow: 2px 2px 5px grey, 2px 2px 5px black;
+    top: 3em;
+    Font-Family: 'Roboto', Sans-Serif;
+    Font-Size: 1.7em;
+
+}
+
+.details button {
+    background-color: rgba(0, 84, 127, 0.3);
+    max-width: 5em;
+    top: 0.5em !important; 
+    right: 16px !important; 
+    border: none;
+    color: white;
+    }

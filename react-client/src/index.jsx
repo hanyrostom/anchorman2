@@ -14,13 +14,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/articles')
+    axios.get('/articles/latest')
     .then(({data}) => {
+      console.log(data);
       this.setState({
-        articles: [{url: 'google.com', name: 'Hany News Article', text: 'hello body of text'}]
+        articles: data
       })
     })
   }
+
+  // handleSave(id){
+  //   axios.post(`/articles/favorites`, {
+  //     query: id
+  //   }).then()
+  //     .catch((err) => {
+  //     console.error(err)
+  //   })
+  // }
 
   search (topic) {
     axios.post(`/articles/${topic}`, {

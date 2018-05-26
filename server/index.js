@@ -8,9 +8,10 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 
 
-app.post(`/articles/`, function (req, res) {
-  //console.log(req.body);
+app.post(`/articles/:topic`, function (req, res) {
+  // console.log(req.params);
   helper.getArticlesByTopic(req.body.query, (articles) => {
+    // console.log(req.params);
     //  console.log('articles server/index>>',articles);
     save(articles,req.body.query).then((data) => {
       // console.log('articles server/index>>',articles);
@@ -19,9 +20,9 @@ app.post(`/articles/`, function (req, res) {
   })
 });
 
-app.get(`/articles/`, function (req, res) {
-  let term = req.query;
-  console.log('req.query???',req.query.query);
+app.get(`/articles/:topic`, function (req, res) {
+  let term = req.params.topic;
+  // console.log('req.query???',req.query.query);
   retrieve(term).then((articles) => {
     res.send(articles)
     
