@@ -2,6 +2,7 @@ import React from 'react';
 
 class Search extends React.Component {
   constructor(props) {
+    console.log(props);
     super(props);
     this.state = {
       topic: ''
@@ -12,7 +13,7 @@ class Search extends React.Component {
 
   onChange (e) {
     this.setState({
-      term: e.target.value
+      topic: e.target.value
     });
   }
 
@@ -24,7 +25,7 @@ class Search extends React.Component {
     return (<div>
       <h4>We'll catch you up on everything you might've missed</h4>
       <p>Type in a topic of interest. ex: Apple, bitcoin.. etc.</p>
-      <input value={this.state.term} onChange={this.onChange}/>
+      <input value={this.state.topic} onChange={this.onChange}/>
       <button onClick={this.search}> What's new</button>
     </div>)
   }

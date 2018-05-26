@@ -27,13 +27,15 @@ class App extends React.Component {
       query: topic
     })
     .then((reponse) => {
-      return axios.get('/articles')
+      
+      return axios.get('/articles', {params:{query:topic}})
     })
     .then(({data}) => {
       this.setState({
         articles: data
       })
     })
+    // .then(data => console.log(data))
     .catch((err) => {
       console.error(err)
     })
@@ -42,7 +44,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Give me the latest on..</h1>
-      <Search onSearch={this.state.search}/>
+      <Search onSearch={this.search}/>
       <NewsList articles ={this.state.articles}/>
     </div>)
   }

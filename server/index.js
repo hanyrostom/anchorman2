@@ -1,22 +1,28 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-var items = require('../database');
-
-var app = express();
-
-
+const express = require('express');
+const {retrieve, save} = require('../database')
+const helper = require('../helpers/news')
+const parser = require('body-parser')
+let app = express();
+app.use(parser.json())
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+
+
+app.post('/articles', function (req, res) {
+  //console.log(req.body);
+  helper.getArticlesByTopic(req.body.query, (articles) => {
+    save(articles,req.body.query).then((data) => {
+      res.status(201).send()
+    })
+  })
+});
+
+app.get('/articles', function (req, res) {
+  let term = req.query;
+  console.log('req.query???',req.query.query);
+  retrieve(term).then((articles) => {
+    res.send(articles)
+  })
 });
 
 app.listen(3000, function() {

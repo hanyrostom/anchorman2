@@ -13,22 +13,50 @@ db.once('open', function() {
 });
 
 var articleSchema = mongoose.Schema({
+  topic:String,
   title: String,
   description: String,
   date: String,
   url: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
-  imageUrl: String
+  imageUrl: String,
+  source: String
 });
 
 var Article = mongoose.model('Article', articleSchema);
 
+let save = ({articles},query) => {
+  console.log('req.body.query',query);
+  return Promise.all(
+    articles.map((articleObj) => {
+      return Article.findOneAndUpdate(
+               {url: articleObj.url},
+               {
+                 topic: query,
+                 date: articleObj.publishedAt,
+                 url: articleObj.url,
+                 imageUrl: articleObj.urlToImage,
+                 description: articleObj.description,
+                 title: articleObj.title,
+                 source: articleObj.source.name
+               },
+               {upsert: true}
+             ).exec()
+    })
+  )
+}
 
-module.exports.selectAll = selectAll;
+let retrieve = (term) => {
+  return Article.find({})
+                // .limit(25)
+                .exec()
+}
 
-
+module.exports.save = save;
+module.exports.retrieve = retrieve;
 
 
 
